@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRISM — Global Youth Conference 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --black: #050508;
+  --white: #f5f5f0;
+  --border: rgba(255,255,255,0.08);
+  --violet: #a78bfa;
+  --pink: #ff6ec7;
+  --blue: #60a5fa;
+  --green: #34d399;
+  --yellow: #fbbf24;
+  --red: #f87171;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 3.5rem;
+  background: rgba(5,5,8,0.85);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.4rem;
+  letter-spacing: 0.3em;
+  background: linear-gradient(90deg,#fff 0%,#a78bfa 50%,#fff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-size: 200%;
+  animation: shimmer 4s infinite;
+}
+@keyframes shimmer { 0%,100%{background-position:0%} 50%{background-position:100%} }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 500; transition: color 0.25s;
+}
+.nav-links a:hover { color: #fff; }
+
+.nav-cta {
+  padding: 0.55rem 1.4rem;
+  border: 1px solid rgba(167,139,250,0.55);
+  color: var(--violet); text-decoration: none;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: all 0.25s;
+}
+.nav-cta:hover { background: var(--violet); color: #000; }
+
+/* hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+.mobile-menu {
+  display: none; position: fixed; top: 70px; left: 0; right: 0;
+  background: rgba(5,5,8,0.97); padding: 2rem 2rem;
+  border-bottom: 1px solid var(--border); z-index: 199; flex-direction: column; gap: 1.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: rgba(255,255,255,0.7); text-decoration: none;
+  font-size: 1rem; font-family: 'Syne', sans-serif;
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 9rem 2rem 5rem;
+  text-align: center;
+}
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(90px); opacity: 0.12;
+  animation: float 9s ease-in-out infinite;
+}
+.orb1 { width:420px;height:420px;background:#a78bfa;top:-5%;left:-10%; }
+.orb2 { width:300px;height:300px;background:#60a5fa;bottom:5%;right:-5%;animation-delay:3s; }
+.orb3 { width:220px;height:220px;background:#ff6ec7;top:55%;left:15%;animation-delay:5.5s; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-28px)} }
+
+/* prism light */
+.beam {
+  position:absolute; top:-8%; left:50%; transform:translateX(-50%);
+  width:2px; height:42%; background:linear-gradient(to bottom,rgba(255,255,255,0.95),rgba(255,255,255,0.05));
+  filter:blur(1px);
+}
+.prism-tri {
+  position:absolute; top:26%; left:50%; transform:translateX(-50%);
+  width:0; height:0;
+  border-left:26px solid transparent; border-right:26px solid transparent;
+  border-top:46px solid rgba(255,255,255,0.13);
+  filter:drop-shadow(0 0 18px rgba(255,255,255,0.25));
+}
+.rays { position:absolute; top:46%; left:50%; }
+.ray {
+  position:absolute; height:2px;
+  transform-origin:0 50%;
+  filter:blur(0.8px);
+  animation:glow 3s ease-in-out infinite alternate;
+}
+@keyframes glow { 0%{opacity:0.45} 100%{opacity:0.95} }
+.r1{width:220px;background:linear-gradient(to right,#ff6ec7,transparent);transform:rotate(18deg);animation-delay:0s}
+.r2{width:250px;background:linear-gradient(to right,#f87171,transparent);transform:rotate(27deg);animation-delay:.15s}
+.r3{width:265px;background:linear-gradient(to right,#fbbf24,transparent);transform:rotate(36deg);animation-delay:.3s}
+.r4{width:250px;background:linear-gradient(to right,#34d399,transparent);transform:rotate(45deg);animation-delay:.45s}
+.r5{width:230px;background:linear-gradient(to right,#60a5fa,transparent);transform:rotate(54deg);animation-delay:.6s}
+.r6{width:210px;background:linear-gradient(to right,#a78bfa,transparent);transform:rotate(63deg);animation-delay:.75s}
+.rl1{width:220px;background:linear-gradient(to left,#ff6ec7,transparent);transform:rotate(-18deg);animation-delay:0s}
+.rl2{width:250px;background:linear-gradient(to left,#f87171,transparent);transform:rotate(-27deg);animation-delay:.15s}
+.rl3{width:265px;background:linear-gradient(to left,#fbbf24,transparent);transform:rotate(-36deg);animation-delay:.3s}
+.rl4{width:250px;background:linear-gradient(to left,#34d399,transparent);transform:rotate(-45deg);animation-delay:.45s}
+.rl5{width:230px;background:linear-gradient(to left,#60a5fa,transparent);transform:rotate(-54deg);animation-delay:.6s}
+.rl6{width:210px;background:linear-gradient(to left,#a78bfa,transparent);transform:rotate(-63deg);animation-delay:.75s}
+.ray-left { transform-origin: 100% 50%; right:0; left:auto; }
+
+.eyebrow {
+  font-family:'Syne',sans-serif; font-size:0.7rem;
+  letter-spacing:0.38em; text-transform:uppercase;
+  color:rgba(255,255,255,0.35); margin-bottom:1rem;
+  position:relative; z-index:2;
+  animation: fadeUp 0.9s ease 0.2s both;
+}
+.hero-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(5.5rem,15vw,14rem);
+  font-weight:300; line-height:0.88;
+  position:relative; z-index:2;
+  animation: fadeUp 0.9s ease 0.4s both;
+}
+.hero-title span {
+  background:linear-gradient(140deg,#fff 0%,#ddd 40%,#fff 60%,#c4b5fd 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 45px rgba(167,139,250,0.25));
+}
+.tagline {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:clamp(1rem,2.5vw,1.55rem); font-weight:300;
+  color:rgba(255,255,255,0.45); margin-top:1.4rem;
+  position:relative; z-index:2;
+  animation: fadeUp 0.9s ease 0.6s both;
+}
+.hero-badges {
+  display:flex; gap:2.5rem; margin-top:2.8rem;
+  position:relative; z-index:2;
+  animation: fadeUp 0.9s ease 0.75s both;
+}
+.badge { text-align:center; }
+.badge-label { font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:0.3rem; }
+.badge-value { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:600; }
+
+.hero-btns {
+  display:flex; gap:1rem; margin-top:2.5rem;
+  position:relative; z-index:2;
+  animation: fadeUp 0.9s ease 0.9s both;
+}
+.btn-main {
+  padding:1rem 2.4rem; background:var(--white); color:var(--black);
+  text-decoration:none; font-family:'Syne',sans-serif;
+  font-size:0.78rem; font-weight:700;
+  letter-spacing:0.18em; text-transform:uppercase;
+  transition:all 0.3s; position:relative; overflow:hidden;
+}
+.btn-main::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg,#ff6ec7,#a78bfa,#60a5fa);
+  opacity:0; transition:opacity 0.3s;
+}
+.btn-main:hover::after { opacity:1; }
+.btn-main .t { position:relative; z-index:1; }
+.btn-main:hover .t { color:#fff; }
+.btn-ghost {
+  padding:1rem 2.4rem;
+  border:1px solid rgba(255,255,255,0.18);
+  color:rgba(255,255,255,0.65); text-decoration:none;
+  font-family:'Syne',sans-serif;
+  font-size:0.78rem; font-weight:600;
+  letter-spacing:0.18em; text-transform:uppercase;
+  transition:all 0.3s;
+}
+.btn-ghost:hover { border-color:#fff; color:#fff; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── SHARED ── */
+.divider { border:none; border-top:1px solid var(--border); }
+
+.wrap { max-width:1160px; margin:0 auto; padding:6rem 3.5rem; }
+
+.s-eye {
+  font-family:'Syne',sans-serif; font-size:0.67rem;
+  letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--violet); margin-bottom:0.9rem;
+}
+.s-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4.5vw,3.6rem);
+  font-weight:300; line-height:1.1; margin-bottom:1.3rem;
+}
+.s-body { font-size:0.95rem; line-height:1.85; color:rgba(255,255,255,0.55); max-width:580px; }
+
+/* reveal */
+.rev { opacity:0; transform:translateY(36px); transition:opacity 0.75s ease, transform 0.75s ease; }
+.rev.vis { opacity:1; transform:translateY(0); }
+
+/* ── ABOUT ── */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border); }
+.stat {
+  background:var(--black); padding:2.5rem;
+  position:relative; overflow:hidden; transition:background 0.3s;
+}
+.stat::after {
+  content:''; position:absolute; top:0;left:0;right:0; height:2px;
+  background:linear-gradient(90deg,#ff6ec7,#a78bfa,#60a5fa,#34d399);
+  opacity:0; transition:opacity 0.3s;
+}
+.stat:hover { background:rgba(255,255,255,0.02); }
+.stat:hover::after { opacity:1; }
+.stat-n {
+  font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:300; line-height:1;
+  background:linear-gradient(135deg,#fff,#a78bfa);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.stat-l { font-size:0.72rem; letter-spacing:0.1em; color:rgba(255,255,255,0.35); margin-top:0.4rem; text-transform:uppercase; }
+
+/* ── COMMITTEES ── */
+.com-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:2.8rem; }
+.com-card {
+  background:var(--black); padding:2.4rem;
+  transition:background 0.3s; position:relative; overflow:hidden;
+}
+.com-card::before {
+  content:''; position:absolute; bottom:0;left:0;right:0; height:2px;
+  background:var(--c); transform:scaleX(0); transition:transform 0.4s; transform-origin:left;
+}
+.com-card:hover::before { transform:scaleX(1); }
+.com-card:hover { background:rgba(255,255,255,0.025); }
+.com-tag {
+  display:inline-block; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase;
+  padding:0.25rem 0.75rem; border:1px solid var(--border);
+  color:rgba(255,255,255,0.35); margin-bottom:1rem;
+}
+.com-name { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:0.7rem; }
+.com-topic { font-size:0.83rem; line-height:1.65; color:rgba(255,255,255,0.48); }
+
+/* ── SCHEDULE ── */
+.timeline { margin-top:3rem; position:relative; padding-left:2.5rem; }
+.timeline::before {
+  content:''; position:absolute; left:0; top:0; bottom:0;
+  width:1px; background:var(--border);
+}
+.tday { margin-bottom:3rem; position:relative; }
+.tday::before {
+  content:''; position:absolute; left:-2.9rem; top:0.45rem;
+  width:9px; height:9px; border-radius:50%;
+  background:var(--violet); box-shadow:0 0 14px var(--violet);
+}
+.td-label { font-family:'Syne',sans-serif; font-size:0.67rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--violet); margin-bottom:0.45rem; }
+.td-title { font-family:'Cormorant Garamond',serif; font-size:1.75rem; font-weight:300; margin-bottom:0.7rem; }
+.td-events { font-size:0.88rem; line-height:1.95; color:rgba(255,255,255,0.48); }
+
+/* ── SPEAKERS ── */
+.sp-grid { .sp-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 👈 5 ช่องในแถวเดียว */
+  gap: 2rem;
+
+  max-width: 1400px;  /* 👈 เพิ่มความกว้าง */
+  margin: 0 auto;     /* 👈 จัดกลาง */
+}display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; margin-top:2.8rem; }
+.sp-card {
+  text-align:center; padding:2rem 1rem;
+  border:1px solid var(--border);
+  transition:border-color 0.3s, transform 0.3s;
+}
+.sp-card:hover { border-color:rgba(167,139,250,0.45); transform:translateY(-5px); }
+.sp-avatar {
+  width:70px; height:70px; border-radius:50%;
+  background:linear-gradient(135deg,#a78bfa,#60a5fa);
+  margin:0 auto 1rem;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:#fff;
+}
+.sp-name { font-family:'Syne',sans-serif; font-size:0.88rem; font-weight:700; margin-bottom:0.3rem; }
+.sp-role { font-size:0.73rem; color:rgba(255,255,255,0.38); }
+
+/* ── VENUE ── */
+.venue-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.venue-box {
+  aspect-ratio:4/3;
+  background:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(96,165,250,0.08));
+  border:1px solid var(--border);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.venue-box::before {
+  content:'BANGKOK';
+  font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300;
+  color:rgba(255,255,255,0.04); position:absolute; letter-spacing:0.3em;
+}
+.venue-icon { font-size:2.8rem; position:relative; z-index:1; }
+.venue-city {
+  font-family:'Syne',sans-serif; font-size:0.75rem;
+  letter-spacing:0.3em; color:rgba(255,255,255,0.4);
+  margin-top:0.6rem; position:relative; z-index:1;
+}
+.venue-facts { display:flex; flex-direction:column; gap:0.9rem; margin-top:2rem; }
+.vfact { display:flex; gap:1rem; align-items:center; font-size:0.88rem; color:rgba(255,255,255,0.48); }
+
+/* ── FAQ ── */
+.faq-list { margin-top:2.8rem; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-q {
+  padding:1.4rem 0; font-family:'Syne',sans-serif;
+  font-size:0.92rem; font-weight:600;
+  cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+  user-select:none; transition:color 0.25s;
+}
+.faq-q:hover { color:var(--violet); }
+.faq-icon { font-size:1.2rem; color:var(--violet); transition:transform 0.3s; flex-shrink:0; }
+.faq-item.open .faq-icon { transform:rotate(45deg); }
+.faq-a {
+  max-height:0; overflow:hidden;
+  transition:max-height 0.4s ease, padding 0.3s;
+  font-size:0.88rem; line-height:1.85; color:rgba(255,255,255,0.5);
+}
+.faq-item.open .faq-a { max-height:220px; padding-bottom:1.4rem; }
+
+/* ── REGISTRATION ── */
+.reg-wrap {
+  background:rgba(255,255,255,0.015);
+  border:1px solid var(--border);
+  padding:4.5rem; position:relative; overflow:hidden;
+}
+.reg-wrap::before {
+  content:''; position:absolute; top:0;left:0;right:0; height:2px;
+  background:linear-gradient(90deg,#ff6ec7,#a78bfa,#60a5fa,#34d399,#fbbf24,#f87171);
+}
+.reg-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:4.5rem; align-items:start; }
+
+.funding-info {
+  margin-top:1.8rem; padding:1.3rem;
+  border:1px solid rgba(167,139,250,0.2);
+  background:rgba(167,139,250,0.04);
+}
+.fi-title { font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--violet); margin-bottom:0.8rem; font-family:'Syne',sans-serif; }
+.fi-row { font-size:0.82rem; line-height:1.9; color:rgba(255,255,255,0.45); }
+.fi-row strong { color:rgba(255,255,255,0.75); }
+
+.checklist { display:flex; flex-direction:column; gap:0.7rem; margin-top:1.8rem; }
+.chk { display:flex; gap:0.8rem; align-items:flex-start; font-size:0.82rem; color:rgba(255,255,255,0.42); }
+.chk-dot { color:var(--violet); margin-top:1px; flex-shrink:0; }
+
+/* form */
+.fg { margin-bottom:1.3rem; }
+.fl {
+  display:block; font-size:0.65rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:0.55rem;
+}
+.fi, .fs, .ft {
+  width:100%; background:rgba(255,255,255,0.04);
+  border:1px solid var(--border); color:var(--white);
+  padding:0.82rem 1rem; font-size:0.88rem;
+  font-family:'Inter',sans-serif;
+  transition:border-color 0.3s, background 0.3s;
+  outline:none; appearance:none;
+}
+.fi:focus,.fs:focus,.ft:focus {
+  border-color:var(--violet);
+  background:rgba(167,139,250,0.06);
+}
+.fi::placeholder,.ft::placeholder { color:rgba(255,255,255,0.18); }
+.fs option { background:#0e0e16; color:#fff; }
+.ft { resize:none; height:108px; line-height:1.65; }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.fi-note {
+  font-size:0.73rem; color:rgba(255,255,255,0.28);
+  margin-top:0.85rem; line-height:1.65;
+}
+.fi-error { border-color:#f87171 !important; }
+
+.sub-btn {
+  width:100%; padding:1.05rem;
+  background:var(--white); color:var(--black);
+  border:none; font-family:'Syne',sans-serif;
+  font-size:0.82rem; font-weight:700;
+  letter-spacing:0.2em; text-transform:uppercase;
+  cursor:pointer; transition:all 0.3s;
+  position:relative; overflow:hidden;
+}
+.sub-btn::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg,#ff6ec7,#a78bfa,#60a5fa);
+  opacity:0; transition:opacity 0.3s;
+}
+.sub-btn:hover::after { opacity:1; }
+.sub-btn .t { position:relative; z-index:1; }
+.sub-btn:hover .t { color:#fff; }
+
+/* success */
+.success { display:none; text-align:center; padding:3rem 1rem; }
+.success.show { display:block; }
+.suc-icon { font-size:3rem; margin-bottom:1rem; }
+.suc-title { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; margin-bottom:0.8rem; }
+.suc-body { font-size:0.88rem; line-height:1.8; color:rgba(255,255,255,0.5); }
+
+/* ── CONTACT ── */
+.con-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:2.8rem; }
+.con-card { background:var(--black); padding:2.5rem; }
+.con-icon { font-size:1.5rem; margin-bottom:1rem; }
+.con-type { font-size:0.67rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:0.5rem; font-family:'Syne',sans-serif; }
+.con-val { font-size:0.92rem; color:rgba(255,255,255,0.78); }
+
+/* ── FOOTER ── */
+footer {
+  border-top:1px solid var(--border);
+  padding:2.5rem 3.5rem;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.f-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.05rem; letter-spacing:0.28em; background:linear-gradient(90deg,#fff,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.f-copy { font-size:0.72rem; color:rgba(255,255,255,0.22); }
+.f-dots { display:flex; gap:7px; }
+.f-dot { width:8px; height:8px; border-radius:50%; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  nav { padding:1.2rem 1.5rem; }
+  .nav-links,.nav-cta { display:none; }
+  .hamburger { display:flex; }
+  .wrap { padding:4rem 1.5rem; }
+  .about-grid,.venue-grid,.reg-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .com-grid { grid-template-columns:1fr; }
+  .sp-grid { grid-template-columns:repeat(2,1fr); }
+  .con-grid { grid-template-columns:1fr; }
+  .reg-wrap { padding:2.5rem 1.5rem; }
+  footer { flex-direction:column; gap:1rem; text-align:center; }
+  .hero-badges { gap:1.5rem; }
+  .frow { grid-template-columns:1fr; }
+  .hero-btns { flex-direction:column; align-items:center; }
+}/* ===== SPEAKER IMAGE FIX ===== */
+.sp-avatar {
+  width: 140px;
+  height: 180px;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sp-card:hover .sp-avatar {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(167,139,250,0.3);
+}/* ===== VENUE PREMIUM ===== */
+.venue-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.venue-list {
+  margin-top: 1.5rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+}
+
+.venue-image-wrap {
+  position: relative;
+}
+
+.venue-img {
+  width: 100%;
+  border-radius: 14px;
+  opacity: 0.95;
+  transition: transform 0.4s ease;
+}
+
+.venue-img:hover {
+  transform: scale(1.03);
+}
+
+.venue-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.6);
+}/* ===== SPEAKER TEXT FIX ===== */
+
+.sp-name {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #f5f5f5; /* ขาว clean */
+  margin-top: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.sp-role {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5); /* เทา soft */
+  margin-top: 0.3rem;
+}
+
+/* ลบสีม่วงเก่า */
+.sp-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* hover effect */
+.sp-card:hover .sp-name {
+  color: #a78bfa; /* violet glow */
+  letter-spacing: 0.03em;
+}
+
+/* card interaction */
+.sp-card {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.sp-card:hover {
+  transform: translateY(-6px);
+}.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #a78bfa, #60a5fa);
+  font-size: 2rem;
+  color: white;
+}.sp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+
+  max-width: 1100px;   /* จำกัดความกว้าง */
+  margin: 0 auto;      /* 👈 ตัวนี้ทำให้มันอยู่กลาง */
+}
+
+.sp-card {
+  text-align: center;
+}.sp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 👈 จาก 4 เป็น 3 */
+  gap: 2rem;
+
+  max-width: 1000px;
+  margin: 0 auto;
+}.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 3rem auto;
+}
+
+.contact-card {
+  text-decoration: none;
+  color: inherit;
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(167,139,250,0.5);
+  box-shadow: 0 10px 30px rgba(167,139,250,0.15);
+}
+
+.contact-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+  margin-bottom: 0.5rem;
+}
+
+.contact-value {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* hover text glow */
+.contact-card:hover .contact-value {
+  color: #a78bfa;
+}.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  max-width: 900px;
+}
+
+.benefit-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  border-color: rgba(167,139,250,0.4);
+  transform: translateY(-5px);
+}
+
+.b-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.b-desc {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">PRISM</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#committees">Committees</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#register" class="nav-cta">Apply Now</a>
+  <div class="hamburger" onclick="toggleMenu()" id="ham">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#committees" onclick="closeMenu()">Committees</a>
+  <a href="#schedule" onclick="closeMenu()">Schedule</a>
+  <a href="#speakers" onclick="closeMenu()">Speakers</a>
+  <a href="#venue" onclick="closeMenu()">Venue</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#register" onclick="closeMenu()" style="color:var(--violet)">Apply Now →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="beam"></div>
+  <div class="prism-tri"></div>
+  <div class="rays">
+    <div class="ray r1"></div><div class="ray r2"></div>
+    <div class="ray r3"></div><div class="ray r4"></div>
+    <div class="ray r5"></div><div class="ray r6"></div>
+    <div class="ray rl1 ray-left"></div><div class="ray rl2 ray-left"></div>
+    <div class="ray rl3 ray-left"></div><div class="ray rl4 ray-left"></div>
+    <div class="ray rl5 ray-left"></div><div class="ray rl6 ray-left"></div>
+  </div>
+  <p class="eyebrow">Global Youth Conference · Bangkok, Thailand · 2026</p>
+  <h1 class="hero-title"><span>PRISM</span></h1>
+  <p class="tagline">Refracting perspectives. Uniting futures.</p>
+  <div class="hero-badges">
+    <div class="badge"><div class="badge-label">Year</div><div class="badge-value">2026</div></div>
+    <div class="badge"><div class="badge-label">Location</div><div class="badge-value">Bangkok, TH</div></div>
+    <div class="badge"><div class="badge-label">FORMAT</div><div class="badge-value">Global Policy Dialogue</div></div>
+    <div class="badge"><div class="badge-label">Type</div><div class="badge-value">Private Programme</div></div>
+  </div>
+  <div class="hero-btns">
+    <a href="#register" class="btn-main"><span class="t">Apply as Delegate</span></a>
+    <a href="#about" class="btn-ghost">Learn More</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<div class="wrap" id="about">
+  <div class="about-grid">
+    <div class="rev">
+      <p class="s-eye">About Prism</p>
+      <h2 class="s-title">Where global perspectives converge</h2>
+      <p class="s-body">Prism is a exclusive Global Youth Conference hosted in the heart of Bangkok, Thailand. Like a prism that refracts a single beam of light into a full spectrum, we bring together young leaders from across the globe, each with a unique perspective.</p>
+      <p class="s-body" style="margin-top:1rem">Our delegates don't just debate resolutions. They reshape the way they see the world.</p>
+    </div>
+<div class="stats-grid rev">
+
+  <div class="stat">
+    <div class="stat-n">30</div>
+    <div class="stat-l">Total Seats</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-n">5</div>
+    <div class="stat-l">Fully Funded Delegates</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-n">10</div>
+    <div class="stat-l">Partial Funding</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-n">15</div>
+    <div class="stat-l">Self-Funded Delegates</div>
+  </div>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- COMMITTEES -->
+<div class="wrap" id="committees">
+  <div class="rev">
+    <p class="s-eye">Committees & Topics</p>
+    <h2 class="s-title">The arenas of debate</h2>
+    <p class="s-body">Six committees. Six urgent global conversations. Each designed to challenge your thinking and sharpen your voice.</p>
+  </div>
+  <div class="com-grid rev">
+    <div class="com-card" style="--c:linear-gradient(90deg,#ff6ec7,#f87171)">
+      <div class="com-tag">01</div>
+      <div class="com-name">AI, Power & Society</div>
+      <div class="com-topic"> Who controls intelligence in an age where AI shapes economies, narratives, and decision-making?</div>
+    </div>
+    <div class="com-card" style="--c:linear-gradient(90deg,#a78bfa,#c084fc)">
+      <div class="com-tag">02</div>
+      <div class="com-name">Climate & Economic Survival</div>
+      <div class="com-topic">Balancing sustainability with growth in a world facing irreversible environmental shifts.</div>
+    </div>
+    <div class="com-card" style="--c:linear-gradient(90deg,#60a5fa,#38bdf8)">
+      <div class="com-tag">03</div>
+      <div class="com-name">The Future of Global Order</div>
+      <div class="com-topic">As power shifts, what does leadership and cooperation look like in a multipolar world?</div>
+    </div>
+    <div class="com-card" style="--c:linear-gradient(90deg,#34d399,#10b981)">
+      <div class="com-tag">04</div>
+      <div class="com-name">Mental Health & Modern Society</div>
+      <div class="com-topic">The silent crisis affecting a generation navigating pressure, identity, and uncertainty.</div>
+    </div>
+    <div class="com-card" style="--c:linear-gradient(90deg,#fbbf24,#f59e0b)">
+      <div class="com-tag">05</div>
+      <div class="com-name">Technology & Human Identity</div>
+      <div class="com-topic">How innovation is reshaping the way we think, connect, and define ourselves</div>
+    </div>
+    <div class="com-card" style="--c:linear-gradient(90deg,#f87171,#fb923c)">
+      <div class="com-tag">06</div>
+      <div class="com-name">Inequality & Opportunity</div>
+      <div class="com-topic">Who gets access to opportunity in a rapidly changing global economy?</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SCHEDULE -->
+<div class="wrap" id="schedule">
+  <div class="rev">
+    <p class="s-eye">Programme</p>
+    <h2 class="s-title">Private Programme</h2>
+    <p class="s-body">
+      A one-day, highly selective experience limited to just 30 carefully selected delegates designed for high-impact dialogue, leadership, and global exchange in Bangkok.
+    </p>
+  </div>
+
+  <div class="timeline rev">
+
+    <div class="tday">
+      <div class="td-label">MAIN SESSION</div>
+      <div class="td-title">Opening & Global Dialogue</div>
+      <div class="td-events">
+        Selective registration · Opening keynote · High-level panel discussion · Moderated global dialogue
+      </div>
+    </div>
+
+    <div class="tday">
+      <div class="td-label">CORE EXPERIENCE</div>
+      <div class="td-title">Debate & Leadership Exchange</div>
+      <div class="td-events">
+        Structured debate sessions · Speech contest · Leadership roundtables · Cultural exchange experience
+      </div>
+    </div>
+
+    <div class="tday">
+      <div class="td-label">CLOSING</div>
+      <div class="td-title">Exclusive Dinner & Closing Circle</div>
+      <div class="td-events">
+        Curated dinner experience · Reflection circle · Recognition session · Closing remarks
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SPEAKERS -->
+<div class="wrap" id="speakers">
+  <div class="rev">
+    <p class="s-eye">Guests &amp; Speakers</p>
+    <h2 class="s-title">Voices that inspire</h2>
+    <p class="s-body">We are curating an exceptional lineup of speakers, diplomats, and youth leaders. Announcements coming soon.</p>
+  </div>
+  <div class="sp-grid rev">
+   <div class="sp-grid rev">
+
+  <!-- 1. Keynote -->
+  <a href="https://www.linkedin.com/in/chirapat-fuangfuphitak-00131024b" target="_blank" class="sp-card">
+    <img src="IMG_9493.PNG" class="sp-avatar">
+    <div class="sp-name">Chirapat Boss Fuangfuphitak</div>
+    <div class="sp-role">Keynote Speaker</div>
+  </a>
+
+  <!-- 2. Guest Diplomat -->
+  <div class="sp-card">
+    <div class="sp-avatar placeholder">?</div>
+    <div class="sp-name">Guest Diplomat</div>
+    <div class="sp-role">To be announced</div>
+  </div>
+
+  <!-- 3. AI Speaker -->
+  <div class="sp-card">
+    <div class="sp-avatar placeholder">AI</div>
+    <div class="sp-name">AI & Future Systems Expert</div>
+    <div class="sp-role">AI Speaker</div>
+  </div>
+
+  <!-- 4. Special Guest -->
+  <div class="sp-card">
+    <div class="sp-avatar placeholder">★</div>
+    <div class="sp-name">Special Guest</div>
+    <div class="sp-role">To be revealed</div>
+  </div>
+
+  <!-- 5. Claire (ย้ายมาสุดท้ายแล้ว) -->
+  <a href="https://www.linkedin.com/in/clairkodcha" target="_blank" class="sp-card">
+    <img src="IMG_0785.JPG" class="sp-avatar">
+    <div class="sp-name">Kodchamon Clair Wongkarnkah</div>
+    <div class="sp-role">Moderator</div>
+  </a>
+
+</div>
+</div>
+
+<hr class="divider">
+<div class="wrap" id="benefits">
+  <div class="rev">
+
+    <p class="s-eye">DELEGATE EXPERIENCE</p>
+    <h2 class="s-title">Why join Prism 2026</h2>
+    <p class="s-body">
+      A highly selective, private experience designed for future global leaders.
+      Limited seats. High impact. Unmatched access.
+    </p>
+
+    <div class="benefit-grid">
+
+      <div class="benefit-card">
+        <div class="b-title">🌍 Global Network</div>
+        <div class="b-desc">Connect with top youth leaders, diplomats, and innovators</div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="b-title">🧠 Elite Discussions</div>
+        <div class="b-desc">Engage in high-level debates on global challenges</div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="b-title">✨ Exclusive Access</div>
+        <div class="b-desc">Private sessions, closed-door networking & curated experiences</div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="b-title">🏆 Recognition</div>
+        <div class="b-desc">Certificates, awards, and leadership distinction</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- VENUE -->
+<!-- ===== VENUE (NEW PREMIUM VERSION) ===== -->
+<div class="wrap" id="venue">
+  <div class="venue-grid">
+
+    <!-- LEFT TEXT -->
+    <div>
+      <p class="s-eye">VENUE</p>
+      <h2 class="s-title">Bangkok, Thailand</h2>
+
+      <p class="s-body">
+        Bangkok will host Prism 2026 — a global capital where tradition meets innovation. 
+        Selected delegates will gather in a carefully curated venue designed for high-level dialogue, privacy, and meaningful exchange.
+        <br><br>
+        The exact location will be revealed exclusively to confirmed participants.
+      </p>
+
+      <ul class="venue-list">
+        <li>📍 Bangkok, Thailand</li>
+        <li>🏛️ Private premium venue (shared upon acceptance)</li>
+        <li>✈️ Accessible via Suvarnabhumi International Airport</li>
+        <li>🏨 Curated hotel options for selected delegates</li>
+        <li>🌐 Visa support provided upon confirmation</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="venue-image">
+  <img src="IMG_1769.PNG" class="venue-img">
+
+  <div class="venue-overlay">
+    The exact venue will be revealed to confirmed delegates only
+  </div>
+</div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<div class="wrap" id="faq">
+  <div class="rev">
+    <p class="s-eye">FAQ</p>
+    <h2 class="s-title">Frequently asked questions</h2>
+  </div>
+  <div class="faq-list rev">
+    <div class="faq-item">
+      <div class="faq-q">Who can apply as a delegate? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Anyone who is passionate about global issues and wants to engage in high-level discussions. Seats are limited and admission is selective.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this an exclusive conference? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. All applications are personally reviewed by the Prism team to ensure the quality and authenticity of each delegate. Submitting a form does not guarantee a seat. Successful applicants will be notified via email.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What are the funding options? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Delegates may apply as Self-Funded (covering all costs personally), Partially Funded (Prism covers part of the fee), or Fully Funded (Prism covers all costs). Funding decisions are made as part of the admissions review. We are committed to making Prism accessible to talented delegates regardless of financial background.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the conference language? <span class="faq-icon">+</span></div>
+      <div class="faq-a">All proceedings are conducted in English. Delegates are expected to communicate, debate, and write position papers and resolutions in English.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">When will exact dates be confirmed? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Exact conference dates will be announced soon. Registered applicants will be notified immediately via email. Check this page for updates.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What should I write in my motivation letter? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Your essay should explain why you want to join Prism GYC, which global issues you care most about, what committee topics interest you, and what unique perspective you bring. Aim for 200–400 words.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- REGISTRATION -->
+<div class="wrap" id="register">
+  <div class="reg-wrap rev">
+    <div class="reg-grid">
+
+      <!-- LEFT -->
+      <div>
+        <p class="s-eye">Delegate Registration</p>
+        <h2 class="s-title" style="font-size:2.3rem">Apply to join<br>Prism 2026</h2>
+        <p class="s-body">Seats are limited and admission is selective. Submit your application — our team will review it and notify you of the outcome.</p>
+        <div class="checklist">
+          <div class="chk"><span class="chk-dot">✦</span> All applications reviewed by the Prism team</div>
+          <div class="chk"><span class="chk-dot">✦</span> Admission result notified via email</div>
+          <div class="chk"><span class="chk-dot">✦</span> No payment required at this stage</div>
+          <div class="chk"><span class="chk-dot">✦</span> Funding decisions made during review</div>
+        </div>
+        <div class="funding-info">
+          <div class="fi-title">Funding Types</div>
+          <div class="fi-row"><strong>Self-Funded</strong> — Delegate covers all conference costs</div>
+          <div class="fi-row"><strong>Partial Funding</strong> — Prism covers part of the fee</div>
+          <div class="fi-row"><strong>Full Funding</strong> — Prism covers all costs</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div>
+        <div id="regForm">
+          <div class="frow">
+            <div class="fg">
+              <label class="fl">First Name *</label>
+              <input type="text" class="fi" id="firstName" placeholder="Jane">
+            </div>
+            <div class="fg">
+              <label class="fl">Last Name *</label>
+              <input type="text" class="fi" id="lastName" placeholder="Smith">
+            </div>
+          </div>
+          <div class="fg">
+            <label class="fl">Email Address *</label>
+            <input type="email" class="fi" id="email" placeholder="jane@school.edu">
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label class="fl">Country of Origin *</label>
+              <input type="text" class="fi" id="country" placeholder="Thailand">
+            </div>
+            <div class="fg">
+              <label class="fl">Phone Number</label>
+              <input type="tel" class="fi" id="phone" placeholder="+66 xx xxx xxxx">
+            </div>
+          </div>
+          <div class="fg">
+            <label class="fl">School / University *</label>
+            <input type="text" class="fi" id="school" placeholder="Your institution name">
+          </div>
+          <div class="fg">
+            <label class="fl">Committee Preference</label>
+            <select class="fs" id="committee">
+              <option value="">Select a committee (optional)</option>
+              <option>GA1 — Disarmament &amp; International Security</option>
+              <option>GA3 — Social, Humanitarian &amp; Cultural</option>
+              <option>UNEP — Environment Programme</option>
+              <option>WHO — World Health Organization</option>
+              <option>UNHCR — Refugee Agency</option>
+              <option>UNSC — Security Council (Crisis)</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl">Funding Preference *</label>
+            <select class="fs" id="funding" onchange="toggleFunding()">
+              <option value="">Select funding type</option>
+              <option value="self">Self-Funded — I will cover all conference costs</option>
+              <option value="partial">Partial Funding — I require partial financial assistance</option>
+              <option value="full">Full Funding — I require full financial assistance</option>
+            </select>
+          </div>
+          <div class="fg" id="fundingBox" style="display:none">
+            <label class="fl">Funding Justification</label>
+            <textarea class="ft" id="fundingReason" style="height:80px" placeholder="Briefly explain your financial situation and why you need funding support..."></textarea>
+          </div>
+          <div class="fg">
+            <label class="fl">Motivation Letter / Essay * <span style="color:rgba(255,255,255,0.3);font-size:0.62rem;letter-spacing:0">(200–400 words)</span></label>
+            <textarea class="ft" id="essay" placeholder="Tell us why you want to join Prism GYC 2026, which global issues you care about, what committee interests you, and what unique perspective you bring to the table..."></textarea>
+          </div>
+          <button class="sub-btn" onclick="submitForm()"><span class="t">Submit Application →</span></button>
+          <p class="fi-note">⚠ Submitting this form does not guarantee a seat. All applications are reviewed by the Prism team. If accepted, you will receive an official notification email with payment and next steps. No payment is required at this stage.</p>
+        </div>
+
+        <div class="success" id="successMsg">
+          <div class="suc-icon">✦</div>
+          <h3 class="suc-title">Application Submitted</h3>
+          <p class="suc-body">Thank you for applying to Prism GYC 2026. Your application is now under review by our team. We carefully evaluate every submission — you will be notified at your email address once a decision has been made.</p>
+          <p class="suc-body" style="margin-top:1rem;color:rgba(255,255,255,0.28);font-size:0.8rem">No payment is required at this stage. If accepted, you will receive full details and next steps.</p>
+          <p class="suc-body" style="margin-top:1.2rem;color:var(--violet)">We appreciate your interest in joining the spectrum. 🌈</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<div class="contact-grid">
+
+  <!-- EMAIL -->
+  <a href="mailto:prismglobal.leaders@gmail.com" class="contact-card">
+    <div class="contact-icon">✉️</div>
+    <div class="contact-label">EMAIL</div>
+    <div class="contact-value">prismglobal.leaders@gmail.com</div>
+  </a>
+
+  <!-- LOCATION -->
+  <a href="https://maps.google.com/?q=Bangkok,Thailand" target="_blank" class="contact-card">
+    <div class="contact-icon">📍</div>
+    <div class="contact-label">BASED IN</div>
+    <div class="contact-value">Bangkok, Thailand</div>
+  </a>
+
+  <!-- INSTAGRAM -->
+  <a href="https://instagram.com/prismleaders" target="_blank" class="contact-card">
+    <div class="contact-icon">🌐</div>
+    <div class="contact-label">INSTAGRAM</div>
+    <div class="contact-value">@prismleaders</div>
+  </a>
+
+</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">PRISM</div>
+  <p class="f-copy">© 2026 Prism Global Youth Conference · Bangkok, Thailand</p>
+  <div class="f-dots">
+    <div class="f-dot" style="background:#ff6ec7"></div>
+    <div class="f-dot" style="background:#f87171"></div>
+    <div class="f-dot" style="background:#fbbf24"></div>
+    <div class="f-dot" style="background:#34d399"></div>
+    <div class="f-dot" style="background:#60a5fa"></div>
+    <div class="f-dot" style="background:#a78bfa"></div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+function toggleMenu() {
+  const m = document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// Smooth scroll for ALL anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const id = this.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// Scroll reveal
+const revEls = document.querySelectorAll('.rev');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('vis'), i * 70);
+    }
+  });
+}, { threshold: 0.08 });
+revEls.forEach(el => obs.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Funding justification toggle
+function toggleFunding() {
+  const val = document.getElementById('funding').value;
+  const box = document.getElementById('fundingBox');
+  box.style.display = (val === 'partial' || val === 'full') ? 'block' : 'none';
+}
+
+// Form submission
+function submitForm() {
+  const required = [
+    { id: 'firstName', label: 'First Name' },
+    { id: 'lastName',  label: 'Last Name' },
+    { id: 'email',     label: 'Email' },
+    { id: 'country',   label: 'Country' },
+    { id: 'school',    label: 'School / University' },
+    { id: 'funding',   label: 'Funding Preference' },
+    { id: 'essay',     label: 'Motivation Letter' },
+  ];
+
+  let valid = true;
+  required.forEach(f => {
+    const el = document.getElementById(f.id);
+    el.classList.remove('fi-error');
+    if (!el.value.trim()) {
+      el.classList.add('fi-error');
+      valid = false;
+    }
+  });
+
+  if (!valid) {
+    alert('Please fill in all required fields marked with *');
+    return;
+  }
+
+  const emailEl = document.getElementById('email');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+    emailEl.classList.add('fi-error');
+    alert('Please enter a valid email address.');
+    return;
+  }
+const data = {
+  firstName: document.getElementById("firstName").value,
+  lastName: document.getElementById("lastName").value,
+  email: document.getElementById("email").value,
+  country: document.getElementById("country").value,
+  school: document.getElementById("school").value,
+  funding: document.getElementById("funding").value,
+  essay: document.getElementById("essay").value
+};
+
+fetch("https://formspree.io/f/xyknyyja", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  body: JSON.stringify(data)});
+  // Show success
+  document.getElementById('regForm').style.display = 'none';
+  document.getElementById('successMsg').classList.add('show');
+  const regSection = document.getElementById('register');
+  const top = regSection.getBoundingClientRect().top + window.scrollY - 100;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
