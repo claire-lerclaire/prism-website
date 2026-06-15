@@ -649,6 +649,151 @@ footer {
   font-size: 0.9rem;
   opacity: 0.7;
 }
+  /* ═══════════════════════════════════════════
+   MOBILE LAYOUT FIX
+   Applies only to screens ≤ 768px
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Stats grid — ลดขนาดตัวเลขให้พอดี */
+  .stat-num,
+  .stat-number {
+    font-size: 2.8rem !important;
+    line-height: 1 !important;
+  }
+  .stat-label {
+    font-size: 0.55rem !important;
+    letter-spacing: 0.18em !important;
+  }
+  .stat-item {
+    padding: 28px 20px !important;
+  }
+
+  /* Programme section — ลดขนาดหัวข้อ */
+  .prog-title,
+  .period-label {
+    font-size: 1.2rem !important;
+    line-height: 1.3 !important;
+  }
+  .prog-desc,
+  .period-tag {
+    font-size: 0.72rem !important;
+  }
+
+  /* Speakers section — กำหนดความสูงเท่ากัน */
+  .speaker-card {
+    min-height: 280px !important;
+    padding: 32px 24px !important;
+  }
+  .speaker-role,
+  .speaker-name {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+  .speaker-note,
+  .speaker-title {
+    font-size: 0.72rem !important;
+  }
+
+  /* Why Join cards — ลดความเบียด */
+  .why-card,
+  .feature-card {
+    padding: 24px 18px !important;
+  }
+  .why-title,
+  .feature-title {
+    font-size: 0.85rem !important;
+    line-height: 1.3 !important;
+  }
+  .why-desc,
+  .feature-desc {
+    font-size: 0.7rem !important;
+  }
+
+  /* VENUE SECTION — แก้ตัวอักษรตัดบรรทัดทีละคำ (สำคัญที่สุด!) */
+  #venue,
+  .venue-section {
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+  #venue p,
+  .venue-section p,
+  .venue-intro,
+  .venue-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+    max-width: 100% !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    hyphens: none !important;
+  }
+  #venue h2,
+  .venue-section h2,
+  .v-title {
+    font-size: 2rem !important;
+    line-height: 1.15 !important;
+    word-break: normal !important;
+    white-space: normal !important;
+  }
+  .venue-cols,
+  .venue-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* About section — ลดขนาดหัวข้อ */
+  .about-title,
+  .about-heading {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  .about-body,
+  .about-desc {
+    font-size: 0.85rem !important;
+  }
+
+  /* Section titles — ลดทั้งเว็บ */
+  .section-title,
+  .s-title {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+  }
+  .section-label,
+  .s-label {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.3em !important;
+  }
+
+  /* Section padding — ลดระยะห่าง */
+  section {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+  .section-inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Form — ทำให้ฟิลด์กรอกใหญ่ขึ้น แตะง่ายขึ้น */
+  .fi,
+  .fs,
+  .ft {
+    font-size: 0.9rem !important;
+    padding: 14px 16px !important;
+  }
+  .fl {
+    font-size: 0.62rem !important;
+  }
+
+  /* Apply CTA — ปรับให้ปุ่มไม่เล็กเกินไป */
+  .btn-primary,
+  .btn-secondary {
+    padding: 16px 28px !important;
+    font-size: 0.7rem !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
 </style>
 </head>
 <body>
