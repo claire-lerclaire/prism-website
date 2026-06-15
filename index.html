@@ -1042,9 +1042,18 @@ footer {
               <input type="text" class="fi" id="country" placeholder="Thailand">
             </div>
             <div class="fg">
-              <label class="fl">Phone Number</label>
-              <input type="tel" class="fi" id="phone" placeholder="+66 xx xxx xxxx">
+              <label class="fl">WhatsApp Number *</label>
+              <input type="tel" class="fi" id="whatsapp" placeholder="+66 xx xxx xxxx">
+              <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:0.05em;">Used for delegate group communications. WeChat / KakaoTalk / Telegram also accepted.</div>
             </div>
+          <div class="fg">
+          <label class="fl">Instagram Handle</label>
+          <input type="text" class="fi" id="instagram" placeholder="@username (optional)">
+        </div>
+        <div class="fg">
+          <label class="fl">Other Social Media</label>
+          <input type="text" class="fi" id="otherSocial" placeholder="TikTok, LinkedIn, X, etc. (optional)">
+        </div>
           </div>
           <div class="fg">
             <label class="fl">School / University *</label>
@@ -1189,6 +1198,7 @@ function submitForm() {
     { id: 'email',     label: 'Email' },
     { id: 'country',   label: 'Country' },
     { id: 'school',    label: 'School / University' },
+    { id: 'whatsapp', label: 'WhatsApp Number' },
     { id: 'funding',   label: 'Programme Preference' },
     { id: 'essay',     label: 'Motivation Letter' },
   ];
@@ -1220,6 +1230,9 @@ const data = {
   email: document.getElementById("email").value,
   country: document.getElementById("country").value,
   school: document.getElementById("school").value,
+  whatsapp: document.getElementById("whatsapp").value,
+  instagram: document.getElementById("instagram").value,
+  otherSocial: document.getElementById("otherSocial").value,
   accommodation: document.getElementById("funding").value,
   essay: document.getElementById("essay").value
 };
