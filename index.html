@@ -976,8 +976,8 @@ footer {
       <div class="faq-a">Yes. All applications are personally reviewed by the Prism team to ensure the quality and authenticity of each delegate. Submitting a form does not guarantee a seat. Successful applicants will be notified via email.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What are the funding options? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Delegates may apply as Self-Funded (covering all costs personally), Partially Funded (Prism covers part of the fee), or Fully Funded (Prism covers all costs). Funding decisions are made as part of the admissions review. We are committed to making Prism accessible to talented delegates regardless of financial background.</div>
+      <div class="faq-q">What programme types are available? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Prism 2026 offers two programme types. <strong>Standard</strong> includes the full conference programme but does not include accommodation — delegates arrange their own stay. <strong>All-Inclusive</strong> includes both the conference programme and accommodation throughout the event. Select your preferred option in the application form.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">What is the conference language? <span class="faq-icon">+</span></div>
@@ -1013,10 +1013,9 @@ footer {
           <div class="chk"><span class="chk-dot">✦</span> Funding decisions made during review</div>
         </div>
         <div class="funding-info">
-          <div class="fi-title">Funding Types</div>
-          <div class="fi-row"><strong>Self-Funded</strong> — Delegate covers all conference costs</div>
-          <div class="fi-row"><strong>Partial Funding</strong> — Prism covers part of the fee</div>
-          <div class="fi-row"><strong>Full Funding</strong> — Prism covers all costs</div>
+          <div class="fi-title">Programme Types</div>
+          <div class="fi-row"><strong>Standard</strong> — Conference programme only (accommodation not included)</div>          
+          <div class="fi-row"><strong>All-Inclusive</strong> — Conference programme with accommodation included</div>        
         </div>
       </div>
 
@@ -1063,18 +1062,14 @@ footer {
               <option>UNSC — Security Council (Crisis)</option>
             </select>
           </div>
-          <div class="fg">
-            <label class="fl">Funding Preference *</label>
-            <select class="fs" id="funding" onchange="toggleFunding()">
-              <option value="">Select funding type</option>
-              <option value="self">Self-Funded — I will cover all conference costs</option>
-              <option value="partial">Partial Funding — I require partial financial assistance</option>
-              <option value="full">Full Funding — I require full financial assistance</option>
-            </select>
-          </div>
-          <div class="fg" id="fundingBox" style="display:none">
-            <label class="fl">Funding Justification</label>
-            <textarea class="ft" id="fundingReason" style="height:80px" placeholder="Briefly explain your financial situation and why you need funding support..."></textarea>
+               <div class="fg">
+          <label class="fl">Programme Preference *</label>
+         <select class="fs" id="funding">
+            <option value="">Select programme type</option>
+            <option value="standard">Standard — Conference only (accommodation not included)</option>
+            <option value="inclusive">All-Inclusive — Conference with accommodation included</option>
+          </select>
+        </div>
           </div>
           <div class="fg">
             <label class="fl">Motivation Letter / Essay * <span style="color:rgba(255,255,255,0.3);font-size:0.62rem;letter-spacing:0">(200–400 words)</span></label>
@@ -1186,13 +1181,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-// Funding justification toggle
-function toggleFunding() {
-  const val = document.getElementById('funding').value;
-  const box = document.getElementById('fundingBox');
-  box.style.display = (val === 'partial' || val === 'full') ? 'block' : 'none';
-}
-
 // Form submission
 function submitForm() {
   const required = [
@@ -1201,7 +1189,7 @@ function submitForm() {
     { id: 'email',     label: 'Email' },
     { id: 'country',   label: 'Country' },
     { id: 'school',    label: 'School / University' },
-    { id: 'funding',   label: 'Funding Preference' },
+    { id: 'funding',   label: 'Programme Preference' },
     { id: 'essay',     label: 'Motivation Letter' },
   ];
 
@@ -1232,7 +1220,7 @@ const data = {
   email: document.getElementById("email").value,
   country: document.getElementById("country").value,
   school: document.getElementById("school").value,
-  funding: document.getElementById("funding").value,
+  accommodation: document.getElementById("funding").value,
   essay: document.getElementById("essay").value
 };
 
